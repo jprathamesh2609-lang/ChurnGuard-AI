@@ -1,0 +1,280 @@
+{
+  "dataset_name": "Telco Customer Churn (IBM schema) - schema-identical replica",
+  "records": 7043,
+  "columns_raw": 21,
+  "features_raw": 19,
+  "missing_raw_nan": 0,
+  "blank_totalcharges_fixed": 11,
+  "duplicates": 0,
+  "numeric_features": [
+    "SeniorCitizen",
+    "tenure",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "categorical_features": [
+    "gender",
+    "Partner",
+    "Dependents",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod"
+  ],
+  "new_features": [
+    "num_addons",
+    "protection_services",
+    "avg_monthly_spend",
+    "charge_vs_avg",
+    "tenure_group",
+    "has_family"
+  ],
+  "overall_churn_rate": 28.155615504756497,
+  "churn_by_contract": {
+    "Month-to-month": 45.87,
+    "One year": 12.4,
+    "Two year": 3.54
+  },
+  "churn_by_internet": {
+    "Fiber optic": 42.16,
+    "DSL": 23.92,
+    "No": 7.07
+  },
+  "churn_by_payment": {
+    "Electronic check": 32.63,
+    "Mailed check": 27.28,
+    "Bank transfer (automatic)": 25.89,
+    "Credit card (automatic)": 24.12
+  },
+  "tenure_median": {
+    "No": 35.0,
+    "Yes": 15.0
+  },
+  "mean_monthly_charges": {
+    "No": 58.80053754940711,
+    "Yes": 77.00640948058496
+  },
+  "churn_by_tenure_band": {
+    "0-12": 51.37,
+    "13-24": 41.36,
+    "25-48": 19.43,
+    "49-72": 4.44
+  },
+  "baseline_table": [
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 0.819,
+      "Precision": 0.7029,
+      "Recall": 0.6196,
+      "F1 Score": 0.6586,
+      "ROC-AUC": 0.8775
+    },
+    {
+      "Model": "Random Forest",
+      "Accuracy": 0.8062,
+      "Precision": 0.6792,
+      "Recall": 0.5919,
+      "F1 Score": 0.6326,
+      "ROC-AUC": 0.8625
+    }
+  ],
+  "experiment_table": [
+    {
+      "Experiment": "1. Logistic Regression (baseline)",
+      "CV F1 (train)": 0.6475,
+      "Accuracy": 0.819,
+      "Precision": 0.7029,
+      "Recall": 0.6196,
+      "F1 Score": 0.6586,
+      "ROC-AUC": 0.8775
+    },
+    {
+      "Experiment": "2. Random Forest (baseline)",
+      "CV F1 (train)": 0.6031,
+      "Accuracy": 0.8062,
+      "Precision": 0.6792,
+      "Recall": 0.5919,
+      "F1 Score": 0.6326,
+      "ROC-AUC": 0.8625
+    },
+    {
+      "Experiment": "3. Logistic Reg. + features + scaling",
+      "CV F1 (train)": 0.6478,
+      "Accuracy": 0.819,
+      "Precision": 0.7064,
+      "Recall": 0.6121,
+      "F1 Score": 0.6559,
+      "ROC-AUC": 0.8765
+    },
+    {
+      "Experiment": "4. Logistic Reg. + features + class weight",
+      "CV F1 (train)": 0.6738,
+      "Accuracy": 0.7899,
+      "Precision": 0.5955,
+      "Recall": 0.7935,
+      "F1 Score": 0.6803,
+      "ROC-AUC": 0.8767
+    },
+    {
+      "Experiment": "5. Gradient Boosting + features",
+      "CV F1 (train)": 0.6318,
+      "Accuracy": 0.8141,
+      "Precision": 0.6991,
+      "Recall": 0.597,
+      "F1 Score": 0.644,
+      "ROC-AUC": 0.8715
+    },
+    {
+      "Experiment": "6. Random Forest + features + class weight (tuned)",
+      "CV F1 (train)": 0.6709,
+      "Accuracy": 0.7913,
+      "Precision": 0.5996,
+      "Recall": 0.7809,
+      "F1 Score": 0.6783,
+      "ROC-AUC": 0.8691
+    }
+  ],
+  "best_params": {
+    "model__max_depth": null,
+    "model__min_samples_leaf": 8,
+    "model__n_estimators": 200
+  },
+  "selected_model": "4. Logistic Reg. + features + class weight",
+  "final_metrics": {
+    "Accuracy": 0.7899219304471257,
+    "Precision": 0.5954631379962193,
+    "Recall": 0.7934508816120907,
+    "F1 Score": 0.6803455723542117,
+    "ROC-AUC": 0.87674107187304
+  },
+  "confusion_matrix": {
+    "TN": 798,
+    "FP": 214,
+    "FN": 82,
+    "TP": 315
+  },
+  "before": {
+    "name": "1. Logistic Regression (baseline)",
+    "f1": 0.6586345381526104,
+    "recall": 0.6196473551637279,
+    "precision": 0.7028571428571428
+  },
+  "after": {
+    "name": "4. Logistic Reg. + features + class weight",
+    "f1": 0.6803455723542117,
+    "recall": 0.7934508816120907,
+    "precision": 0.5954631379962193
+  },
+  "top_features": {
+    "Contract": 0.14908611305504063,
+    "tenure": 0.06690926420064067,
+    "InternetService": 0.022877165847353376,
+    "PaymentMethod": 0.008575935657552592,
+    "tenure_group": 0.00430039311908974,
+    "protection_services": 0.0033620848949138305,
+    "gender": 0.0014281908480795248,
+    "TotalCharges": 0.0007345364831476519,
+    "OnlineSecurity": 0.0004484769276279499,
+    "has_family": 0.0002681854774453596
+  },
+  "thresholds": {
+    "high": 0.65,
+    "medium": 0.4
+  },
+  "band_table": [
+    {
+      "Risk": "HIGH",
+      "Customers": 414,
+      "Share of customers (%)": 29.38,
+      "Actual churn rate (%)": 66.91,
+      "Churners captured (%)": 69.77
+    },
+    {
+      "Risk": "MEDIUM",
+      "Customers": 205,
+      "Share of customers (%)": 14.55,
+      "Actual churn rate (%)": 33.17,
+      "Churners captured (%)": 17.13
+    },
+    {
+      "Risk": "LOW",
+      "Customers": 790,
+      "Share of customers (%)": 56.07,
+      "Actual churn rate (%)": 6.58,
+      "Churners captured (%)": 13.1
+    }
+  ],
+  "demo_predictions": {
+    "New fibre customer on a monthly plan": {
+      "predicted_churn": "YES",
+      "churn_probability": 0.9329613749250504,
+      "risk_level": "HIGH",
+      "suggested_action": "Priority retention: personal call / targeted offer / move to a longer contract."
+    },
+    "Mid-tenure customer on a one-year plan": {
+      "predicted_churn": "NO",
+      "churn_probability": 0.1921300271725475,
+      "risk_level": "LOW",
+      "suggested_action": "No action needed: routine engagement only."
+    },
+    "Loyal customer on a two-year plan": {
+      "predicted_churn": "NO",
+      "churn_probability": 0.017670177350077927,
+      "risk_level": "LOW",
+      "suggested_action": "No action needed: routine engagement only."
+    }
+  },
+  "demo_inputs": {
+    "New fibre customer on a monthly plan": {
+      "Contract": "Month-to-month",
+      "tenure": 5,
+      "MonthlyCharges": 79.5,
+      "InternetService": "Fiber optic",
+      "PaymentMethod": "Electronic check",
+      "OnlineSecurity": "No",
+      "TechSupport": "No"
+    },
+    "Mid-tenure customer on a one-year plan": {
+      "Contract": "One year",
+      "tenure": 30,
+      "MonthlyCharges": 65.0,
+      "InternetService": "DSL",
+      "PaymentMethod": "Mailed check"
+    },
+    "Loyal customer on a two-year plan": {
+      "Contract": "Two year",
+      "tenure": 60,
+      "MonthlyCharges": 55.0,
+      "InternetService": "DSL",
+      "PaymentMethod": "Bank transfer (automatic)",
+      "OnlineSecurity": "Yes",
+      "TechSupport": "Yes"
+    }
+  },
+  "findings": [
+    "Contract type is the strongest business lever: month-to-month customers churn at 45.9% versus 3.5% on two-year contracts.",
+    "Churn is concentrated among new customers: 51.4% churn in the first 12 months versus 4.4% after 4 years.",
+    "The model relies mainly on Contract, tenure, InternetService; fibre-optic (42.2%) and electronic-check payers (32.6%) show above-average churn (overall 28.2%)."
+  ],
+  "business_recommendation": "Route customers scored HIGH risk (probability >= 0.65) to a retention team; offer discounted 1-2 year contracts to month-to-month customers, build a first-12-months onboarding programme, investigate fibre-optic service quality, and encourage automatic payment methods and security/support add-ons.",
+  "limitations": [
+    "The dataset used here is a schema-identical replica of the IBM Telco data - re-run with the official CSV to obtain official metrics.",
+    "Single historical snapshot: no time dimension, so seasonality and trends are not captured.",
+    "The model shows association, not causation - a discount is not guaranteed to change behaviour.",
+    "Probabilities from a class-weighted model are not calibrated; use them for ranking, not as exact percentages.",
+    "Retention cost / customer lifetime value were not in the data, so the ideal risk threshold is a business assumption.",
+    "A prediction is not certainty: a share of flagged customers would not have left."
+  ],
+  "train_test": {
+    "train": 5634,
+    "test": 1409
+  }
+}
